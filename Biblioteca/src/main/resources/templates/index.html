@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Inicio</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Hero Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center py-5">
+                        <h1 class="display-4"><i class="bi bi-book-fill"></i> Bienvenido a la Biblioteca Municipal</h1>
+                        <p class="lead">Descubre un mundo de conocimiento y cultura</p>
+                        <a href="/libros" class="btn btn-light btn-lg mt-3">
+                            <i class="bi bi-search"></i> Explorar Catálogo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Libro Destacado -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4"><i class="bi bi-star-fill text-warning"></i> Libro Destacado del Mes</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Cien Años de Soledad</h3>
+                        <h5 class="card-subtitle mb-3 text-muted">Gabriel García Márquez</h5>
+                        <p class="card-text">
+                            Una obra maestra del realismo mágico que narra la historia de la familia Buendía 
+                            a lo largo de siete generaciones en el pueblo ficticio de Macondo. Una exploración 
+                            profunda de la soledad, el amor, y la naturaleza cíclica de la historia.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><strong>ISBN:</strong> 978-0307474728</li>
+                            <li><strong>Categoría:</strong> Ficción</li>
+                            <li><strong>Año:</strong> 1967</li>
+                            <li><strong>Precio:</strong> ₡19.90</li>
+                        </ul>
+                        <span class="badge bg-success">Disponible</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/kGjSq4HqP9g" 
+                            title="Gabriel García Márquez - Cien Años de Soledad" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-center mt-2 text-muted">
+                    <small>Video sobre la vida y obra de Gabriel García Márquez</small>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Estadísticas -->
+        <div class="row mb-5">
+            <div class="col-md-4 mb-3">
+                <div class="card text-center bg-info text-white">
+                    <div class="card-body">
+                        <i class="bi bi-book-fill" style="font-size: 3rem;"></i>
+                        <h3 class="mt-3">Miles de Libros</h3>
+                        <p>Amplía tu conocimiento</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center bg-success text-white">
+                    <div class="card-body">
+                        <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                        <h3 class="mt-3">Comunidad Activa</h3>
+                        <p>Únete a nosotros</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center bg-warning text-white">
+                    <div class="card-body">
+                        <i class="bi bi-clock-history" style="font-size: 3rem;"></i>
+                        <h3 class="mt-3">Horario Amplio</h3>
+                        <p>Siempre disponible</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección Informativa -->
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3><i class="bi bi-info-circle"></i> Sobre Nuestra Biblioteca</h3>
+                        <p>
+                            La Biblioteca Municipal es un espacio dedicado al fomento de la lectura y el 
+                            conocimiento en nuestra comunidad. Contamos con una amplia colección de libros 
+                            en diversas categorías, desde ficción y literatura clásica hasta ciencia, 
+                            tecnología y divulgación científica.
+                        </p>
+                        <p>
+                            Nuestro objetivo es proporcionar acceso gratuito a recursos educativos y 
+                            culturales para todos los ciudadanos, promoviendo el hábito de la lectura 
+                            y el aprendizaje continuo.
+                        </p>
+                        <h5 class="mt-4">Servicios que ofrecemos:</h5>
+                        <ul>
+                            <li>Préstamo de libros</li>
+                            <li>Sala de lectura</li>
+                            <li>Actividades culturales</li>
+                            <li>Talleres de lectura</li>
+                            <li>Acceso a internet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5><i class="bi bi-calendar-event"></i> Horarios</h5>
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Lunes - Viernes:</strong></td>
+                                <td>8:00 - 18:00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sábados:</strong></td>
+                                <td>9:00 - 14:00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Domingos:</strong></td>
+                                <td>Cerrado</td>
+                            </tr>
+                        </table>
+                        
+                        <h5 class="mt-4"><i class="bi bi-envelope"></i> Contáctanos</h5>
+                        <p>¿Tienes alguna sugerencia o queja?</p>
+                        <a href="/quejas" class="btn btn-primary w-100">
+                            <i class="bi bi-chat-dots"></i> Enviar Mensaje
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark text-white">
+                    <div class="card-body text-center py-4">
+                        <h3>¿Listo para comenzar tu aventura literaria?</h3>
+                        <p class="mb-4">Explora nuestro catálogo completo de libros disponibles</p>
+                        <a href="/libros" class="btn btn-primary btn-lg me-2">
+                            <i class="bi bi-book"></i> Ver Catálogo
+                        </a>
+                        <a href="/categorias" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-tags"></i> Ver Categorías
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>

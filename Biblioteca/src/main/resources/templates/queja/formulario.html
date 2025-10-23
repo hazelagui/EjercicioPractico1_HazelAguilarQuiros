@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Contacto - Quejas y Sugerencias</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-chat-left-text"></i> Quejas y Sugerencias
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">
+                            Tu opinión es importante para nosotros. Por favor, comparte tus comentarios, 
+                            sugerencias o quejas para ayudarnos a mejorar nuestros servicios.
+                        </p>
+                        
+                        <form th:action="@{/quejas/enviar}" th:object="${queja}" method="post">
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">
+                                    <i class="bi bi-chat-dots"></i> Mensaje *
+                                </label>
+                                <textarea class="form-control" 
+                                          id="mensaje" 
+                                          th:field="*{mensaje}" 
+                                          rows="6" 
+                                          required 
+                                          placeholder="Escribe aquí tu mensaje detallado..."></textarea>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <i class="bi bi-shield-check"></i> 
+                                <strong>Privacidad:</strong> Tus datos personales serán tratados de manera 
+                                confidencial y utilizados únicamente para dar seguimiento a tu solicitud.
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-4">
+                                <a href="/" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left"></i> Volver
+                                </a>
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-send"></i> Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning mt-3">
+                    <i class="bi bi-info-circle"></i> 
+                    Los campos marcados con <strong>*</strong> son obligatorios.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nombreCliente" class="form-label">
+                                        <i class="bi bi-person"></i> Nombre Completo *
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="nombreCliente" 
+                                           th:field="*{nombreCliente}" 
+                                           required 
+                                           placeholder="Tu nombre completo">
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="bi bi-envelope"></i> Correo Electrónico *
+                                    </label>
+                                    <input type="email" 
+                                           class="form-control" 
+                                           id="email" 
+                                           th:field="*{email}" 
+                                           required 
+                                           placeholder="correo@ejemplo.com">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefono" class="form-label">
+                                        <i class="bi bi-telephone"></i> Teléfono
+                                    </label>
+                                    <input type="tel" 
+                                           class="form-control" 
+                                           id="telefono" 
+                                           th:field="*{telefono}" 
+                                           placeholder="506-1234-5678">
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="tipo" class="form-label">
+                                        <i class="bi bi-list"></i> Tipo *
+                                    </label>
+                                    <select class="form-select" 
+                                            id="tipo" 
+                                            th:field="*{tipo}" 
+                                            required>
+                                        <option value="">Seleccione una opción</option>
+                                        <option value="QUEJA">Queja</option>
+                                        <option value="SUGERENCIA">Sugerencia</option>
+                                        <option value="CONSULTA">Consulta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label">
+                                    <i class="bi bi-bookmark"></i> Asunto *
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="asunto" 
+                                       th:field="*{asunto}" 
+                                       required 
+                                       placeholder="Breve descripción del tema">
+                            </div>
+                            
+                            <div class="
