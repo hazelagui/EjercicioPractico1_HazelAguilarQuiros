@@ -1,53 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Mensaje Enviado</title>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
 </head>
 <body>
-    <div layout:fragment="content">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card border-success">
-                    <div class="card-body text-center py-5">
-                        <div class="mb-4">
-                            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
-                        </div>
-                        <h2 class="text-success mb-3">¡Mensaje Enviado con Éxito!</h2>
-                        <p class="lead">
-                            Gracias por contactarnos. Hemos recibido tu mensaje y lo revisaremos 
-                            en breve.
-                        </p>
-                        <p class="text-muted">
-                            Nos pondremos en contacto contigo a través del correo electrónico 
-                            proporcionado en caso de ser necesario.
-                        </p>
-                        
-                        <div class="mt-5">
-                            <a href="/" class="btn btn-primary me-2">
-                                <i class="bi bi-house"></i> Ir al Inicio
-                            </a>
-                            <a href="/quejas" class="btn btn-outline-secondary">
-                                <i class="bi bi-arrow-left"></i> Enviar Otro Mensaje
-                            </a>
+    <th:block th:replace="~{fragments/layout :: header}"></th:block>
+    <th:block th:replace="~{fragments/layout :: navbar}"></th:block>
+    
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card border-success">
+                        <div class="card-body text-center py-5">
+                            <div class="mb-4">
+                                <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                            </div>
+                            <h2 class="text-success mb-3">¡Mensaje Enviado con Éxito!</h2>
+                            <p class="lead">
+                                Gracias por contactarnos. Hemos recibido tu mensaje y lo revisaremos 
+                                en breve.
+                            </p>
+                            <p class="text-muted">
+                                Nos pondremos en contacto contigo a través del correo electrónico 
+                                proporcionado en caso de ser necesario.
+                            </p>
+                            
+                            <div class="mt-5">
+                                <a href="/" class="btn btn-primary me-2">
+                                    <i class="bi bi-house"></i> Ir al Inicio
+                                </a>
+                                <a href="/quejas" class="btn btn-outline-secondary">
+                                    <i class="bi bi-arrow-left"></i> Enviar Otro Mensaje
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="card mt-4 bg-light">
-                    <div class="card-body">
-                        <h5><i class="bi bi-info-circle"></i> ¿Necesitas más ayuda?</h5>
-                        <p class="mb-2">También puedes contactarnos por:</p>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-telephone-fill text-primary"></i> Teléfono: +506 2222-3333</li>
-                            <li><i class="bi bi-envelope-fill text-primary"></i> Email: info@biblioteca.cr</li>
-                            <li><i class="bi bi-geo-alt-fill text-primary"></i> Dirección: San José, Costa Rica</li>
-                        </ul>
+                    
+                    <div class="card mt-4 bg-light">
+                        <div class="card-body">
+                            <h5><i class="bi bi-info-circle"></i> ¿Necesitas más ayuda?</h5>
+                            <p class="mb-2">También puedes contactarnos por:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-telephone-fill text-primary"></i> Teléfono: +506 2222-3333</li>
+                                <li><i class="bi bi-envelope-fill text-primary"></i> Email: info@biblioteca.cr</li>
+                                <li><i class="bi bi-geo-alt-fill text-primary"></i> Dirección: San José, Costa Rica</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+    <th:block th:replace="~{fragments/layout :: scripts}"></th:block>
 </body>
 </html>

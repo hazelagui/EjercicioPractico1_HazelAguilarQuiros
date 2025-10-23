@@ -1,149 +1,163 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${libro.id != null ? 'Editar Libro' : 'Nuevo Libro'}">Formulario Libro</title>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
 </head>
 <body>
-    <div layout:fragment="content">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0">
-                            <i class="bi bi-book"></i>
-                            <span th:text="${libro.id != null ? 'Editar Libro' : 'Nuevo Libro'}"></span>
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/libros/guardar}" th:object="${libro}" method="post">
-                            <input type="hidden" th:field="*{id}">
-                            
-                            <div class="row">
-                                <div class="col-md-8 mb-3">
-                                    <label for="titulo" class="form-label">
-                                        <i class="bi bi-bookmark"></i> Título *
-                                    </label>
-                                    <input type="text" 
-                                           class="form-control" 
-                                           id="titulo" 
-                                           th:field="*{titulo}" 
-                                           required 
-                                           placeholder="Ingrese el título del libro">
-                                </div>
+    <!-- Header -->
+    <th:block th:replace="~{fragments/layout :: header}"></th:block>
+    
+    <!-- Navbar -->
+    <th:block th:replace="~{fragments/layout :: navbar}"></th:block>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">
+                                <i class="bi bi-book"></i>
+                                <span th:text="${libro.id != null ? 'Editar Libro' : 'Nuevo Libro'}"></span>
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/libros/guardar}" th:object="${libro}" method="post">
+                                <input type="hidden" th:field="*{id}">
                                 
-                                <div class="col-md-4 mb-3">
-                                    <label for="isbn" class="form-label">
-                                        <i class="bi bi-upc"></i> ISBN
-                                    </label>
-                                    <input type="text" 
-                                           class="form-control" 
-                                           id="isbn" 
-                                           th:field="*{isbn}" 
-                                           placeholder="978-XXXXXXXXXX">
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="autor" class="form-label">
-                                        <i class="bi bi-person"></i> Autor *
-                                    </label>
-                                    <input type="text" 
-                                           class="form-control" 
-                                           id="autor" 
-                                           th:field="*{autor}" 
-                                           required 
-                                           placeholder="Nombre del autor">
-                                </div>
-                                
-                                <div class="col-md-6 mb-3">
-                                    <label for="categoria" class="form-label">
-                                        <i class="bi bi-tags"></i> Categoría *
-                                    </label>
-                                    <select class="form-select" 
-                                            id="categoria" 
-                                            th:field="*{categoria.id}" 
-                                            required>
-                                        <option value="">Seleccione una categoría</option>
-                                        <option th:each="cat : ${categorias}" 
-                                                th:value="${cat.id}" 
-                                                th:text="${cat.nombre}">
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="descripcion" class="form-label">
-                                    <i class="bi bi-card-text"></i> Descripción
-                                </label>
-                                <textarea class="form-control" 
-                                          id="descripcion" 
-                                          th:field="*{descripcion}" 
-                                          rows="4" 
-                                          placeholder="Descripción breve del libro"></textarea>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="fechaPublicacion" class="form-label">
-                                        <i class="bi bi-calendar"></i> Fecha de Publicación
-                                    </label>
-                                    <input type="date" 
-                                           class="form-control" 
-                                           id="fechaPublicacion" 
-                                           th:field="*{fechaPublicacion}">
-                                </div>
-                                
-                                <div class="col-md-4 mb-3">
-                                    <label for="precio" class="form-label">
-                                        <i class="bi bi-currency-dollar"></i> Precio
-                                    </label>
-                                    <input type="number" 
-                                           class="form-control" 
-                                           id="precio" 
-                                           th:field="*{precio}" 
-                                           step="0.01" 
-                                           min="0" 
-                                           placeholder="0.00">
-                                </div>
-                                
-                                <div class="col-md-4 mb-3">
-                                    <label class="form-label">
-                                        <i class="bi bi-check-circle"></i> Disponibilidad
-                                    </label>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" 
-                                               type="checkbox" 
-                                               id="disponible" 
-                                               th:field="*{disponible}">
-                                        <label class="form-check-label" for="disponible">
-                                            Libro Disponible
+                                <div class="row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="titulo" class="form-label">
+                                            <i class="bi bi-bookmark"></i> Título *
                                         </label>
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="titulo" 
+                                               th:field="*{titulo}" 
+                                               required 
+                                               placeholder="Ingrese el título del libro">
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <label for="isbn" class="form-label">
+                                            <i class="bi bi-upc"></i> ISBN
+                                        </label>
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="isbn" 
+                                               th:field="*{isbn}" 
+                                               placeholder="978-XXXXXXXXXX">
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="/libros" class="btn btn-secondary">
-                                    <i class="bi bi-arrow-left"></i> Cancelar
-                                </a>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="bi bi-save"></i> Guardar Libro
-                                </button>
-                            </div>
-                        </form>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="autor" class="form-label">
+                                            <i class="bi bi-person"></i> Autor *
+                                        </label>
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="autor" 
+                                               th:field="*{autor}" 
+                                               required 
+                                               placeholder="Nombre del autor">
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="categoria" class="form-label">
+                                            <i class="bi bi-tags"></i> Categoría *
+                                        </label>
+                                        <select class="form-select" 
+                                                id="categoria" 
+                                                th:field="*{categoria.id}" 
+                                                required>
+                                            <option value="">Seleccione una categoría</option>
+                                            <option th:each="cat : ${categorias}" 
+                                                    th:value="${cat.id}" 
+                                                    th:text="${cat.nombre}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">
+                                        <i class="bi bi-card-text"></i> Descripción
+                                    </label>
+                                    <textarea class="form-control" 
+                                              id="descripcion" 
+                                              th:field="*{descripcion}" 
+                                              rows="4" 
+                                              placeholder="Descripción breve del libro"></textarea>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="fechaPublicacion" class="form-label">
+                                            <i class="bi bi-calendar"></i> Fecha de Publicación
+                                        </label>
+                                        <input type="date" 
+                                               class="form-control" 
+                                               id="fechaPublicacion" 
+                                               th:field="*{fechaPublicacion}">
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <label for="precio" class="form-label">
+                                            <i class="bi bi-currency-dollar"></i> Precio
+                                        </label>
+                                        <input type="number" 
+                                               class="form-control" 
+                                               id="precio" 
+                                               th:field="*{precio}" 
+                                               step="0.01" 
+                                               min="0" 
+                                               placeholder="0.00">
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">
+                                            <i class="bi bi-check-circle"></i> Disponibilidad
+                                        </label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" 
+                                                   type="checkbox" 
+                                                   id="disponible" 
+                                                   th:field="*{disponible}">
+                                            <label class="form-check-label" for="disponible">
+                                                Libro Disponible
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mt-4">
+                                    <a href="/libros" class="btn btn-secondary">
+                                        <i class="bi bi-arrow-left"></i> Cancelar
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save"></i> Guardar Libro
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="alert alert-info mt-3">
-                    <i class="bi bi-info-circle"></i> 
-                    Los campos marcados con <strong>*</strong> son obligatorios.
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="bi bi-info-circle"></i> 
+                        Los campos marcados con <strong>*</strong> son obligatorios.
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <!-- Footer -->
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+    
+    <!-- Scripts -->
+    <th:block th:replace="~{fragments/layout :: scripts}"></th:block>
 </body>
 </html>

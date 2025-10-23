@@ -1,89 +1,96 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Listado de Quejas y Sugerencias</title>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
 </head>
 <body>
-    <div layout:fragment="content">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="bi bi-chat-left-text"></i> Quejas y Sugerencias Recibidas</h2>
-            <a href="/quejas" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Nueva
-            </a>
-        </div>
-        
-        <div th:if="${quejas.isEmpty()}" class="alert alert-info">
-            <i class="bi bi-info-circle"></i> No hay quejas o sugerencias registradas.
-        </div>
-        
-        <div class="row">
-            <div class="col-12" th:each="queja : ${quejas}">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="mb-0">
-                                    <i class="bi bi-person-circle"></i>
-                                    <span th:text="${queja.nombreCliente}">Cliente</span>
-                                </h5>
-                                <small class="text-muted">
-                                    <i class="bi bi-calendar"></i>
-                                    <span th:text="${#temporals.format(queja.createdAt, 'dd/MM/yyyy HH:mm')}"></span>
-                                </small>
-                            </div>
-                            <div>
-                                <span th:if="${queja.tipo.name() == 'QUEJA'}" 
-                                      class="badge bg-danger">
-                                    <i class="bi bi-exclamation-triangle"></i> QUEJA
-                                </span>
-                                <span th:if="${queja.tipo.name() == 'SUGERENCIA'}" 
-                                      class="badge bg-success">
-                                    <i class="bi bi-lightbulb"></i> SUGERENCIA
-                                </span>
-                                <span th:if="${queja.tipo.name() == 'CONSULTA'}" 
-                                      class="badge bg-info">
-                                    <i class="bi bi-question-circle"></i> CONSULTA
-                                </span>
-                                
-                                <span th:if="${queja.tratado}" 
-                                      class="badge bg-secondary ms-2">
-                                    <i class="bi bi-check-circle"></i> Tratado
-                                </span>
-                                <span th:unless="${queja.tratado}" 
-                                      class="badge bg-warning text-dark ms-2">
-                                    <i class="bi bi-clock"></i> Pendiente
-                                </span>
+    <th:block th:replace="~{fragments/layout :: header}"></th:block>
+    <th:block th:replace="~{fragments/layout :: navbar}"></th:block>
+    
+    <main>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="bi bi-chat-left-text"></i> Quejas y Sugerencias Recibidas</h2>
+                <a href="/quejas" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Nueva
+                </a>
+            </div>
+            
+            <div th:if="${quejas.isEmpty()}" class="alert alert-info">
+                <i class="bi bi-info-circle"></i> No hay quejas o sugerencias registradas.
+            </div>
+            
+            <div class="row">
+                <div class="col-12" th:each="queja : ${quejas}">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-0">
+                                        <i class="bi bi-person-circle"></i>
+                                        <span th:text="${queja.nombreCliente}">Cliente</span>
+                                    </h5>
+                                    <small class="text-muted">
+                                        <i class="bi bi-calendar"></i>
+                                        <span th:text="${#temporals.format(queja.createdAt, 'dd/MM/yyyy HH:mm')}"></span>
+                                    </small>
+                                </div>
+                                <div>
+                                    <span th:if="${queja.tipo.name() == 'QUEJA'}" 
+                                          class="badge bg-danger">
+                                        <i class="bi bi-exclamation-triangle"></i> QUEJA
+                                    </span>
+                                    <span th:if="${queja.tipo.name() == 'SUGERENCIA'}" 
+                                          class="badge bg-success">
+                                        <i class="bi bi-lightbulb"></i> SUGERENCIA
+                                    </span>
+                                    <span th:if="${queja.tipo.name() == 'CONSULTA'}" 
+                                          class="badge bg-info">
+                                        <i class="bi bi-question-circle"></i> CONSULTA
+                                    </span>
+                                    
+                                    <span th:if="${queja.tratado}" 
+                                          class="badge bg-secondary ms-2">
+                                        <i class="bi bi-check-circle"></i> Tratado
+                                    </span>
+                                    <span th:unless="${queja.tratado}" 
+                                          class="badge bg-warning text-dark ms-2">
+                                        <i class="bi bi-clock"></i> Pendiente
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2">
-                            <i class="bi bi-bookmark"></i>
-                            <strong>Asunto:</strong> 
-                            <span th:text="${queja.asunto}">Asunto</span>
-                        </h6>
-                        <p class="card-text" th:text="${queja.mensaje}">Mensaje</p>
-                        
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <small class="text-muted">
-                                    <i class="bi bi-envelope"></i> 
-                                    <span th:text="${queja.email}">email@ejemplo.com</span>
-                                </small>
-                            </div>
-                            <div class="col-md-6" th:if="${queja.telefono}">
-                                <small class="text-muted">
-                                    <i class="bi bi-telephone"></i> 
-                                    <span th:text="${queja.telefono}">Teléfono</span>
-                                </small>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2">
+                                <i class="bi bi-bookmark"></i>
+                                <strong>Asunto:</strong> 
+                                <span th:text="${queja.asunto}">Asunto</span>
+                            </h6>
+                            <p class="card-text" th:text="${queja.mensaje}">Mensaje</p>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <small class="text-muted">
+                                        <i class="bi bi-envelope"></i> 
+                                        <span th:text="${queja.email}">email@ejemplo.com</span>
+                                    </small>
+                                </div>
+                                <div class="col-md-6" th:if="${queja.telefono}">
+                                    <small class="text-muted">
+                                        <i class="bi bi-telephone"></i> 
+                                        <span th:text="${queja.telefono}">Teléfono</span>
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <th:block th:replace="~{fragments/layout :: footer}"></th:block>
+    <th:block th:replace="~{fragments/layout :: scripts}"></th:block>
 </body>
 </html>
