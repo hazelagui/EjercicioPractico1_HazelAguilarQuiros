@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+package Biblioteca.impl;
 import Biblioteca.domain.Categoria;
 import Biblioteca.repository.CategoriaRepository;
 import Biblioteca.service.CategoriaService;
